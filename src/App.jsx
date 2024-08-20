@@ -1,11 +1,9 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import TodoForm from './components/todoForm'
+import TodoForm from './components/TodoForm.jsx'
 import {CopyOutlined} from '@ant-design/icons';
-import TodoDisplay from './components/TodoDisplay'
-import useFetching from './hooks/useFetching'
+import TodoDisplay from './components/TodoDisplay.jsx'
+import useFetching from './hooks/useFetching.jsx'
 function App() {
 
   const {data,loading,mode} = useFetching('http://localhost:3000/')
