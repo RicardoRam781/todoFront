@@ -8,6 +8,11 @@ export default defineConfig({
     react(),
     VitePWA({
       registerType: 'autoUpdate',
+      filename: 'sw.js', // Nombre de tu archivo de Service Worker
+      injectManifest: {
+        swSrc: './sw.js', // Ruta del SW personalizado
+        swDest: 'dist/sw.js', // Dónde se copiará el SW en la build
+      },
       manifest: {
         name: 'TodoList PWA',
         short_name: 'todoPWA',
