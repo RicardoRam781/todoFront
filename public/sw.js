@@ -1,3 +1,8 @@
+import { precacheAndRoute } from 'workbox-precaching';
+
+
+precacheAndRoute(self.__WB_MANIFEST);
+
 const CACHE_DATA = "appV1";
 const urlsToCache = [
    '/',
