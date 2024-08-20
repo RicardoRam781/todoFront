@@ -8,7 +8,8 @@
     "build": "vite build",
     "serve": "PORT=4433 serve dist",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start": "vite"
   },
   "dependencies": {
     "antd": "^5.20.1",
