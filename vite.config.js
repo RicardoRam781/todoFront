@@ -12,6 +12,7 @@ export default defineConfig({
       injectManifest: {
         swSrc: './sw-custom.js', // Ruta del SW personalizado
         swDest: 'dist/sw.js', // Dónde se copiará el SW en la build
+        injectionPoint: undefined
       },
       manifest: {
         name: 'TodoList PWA',
