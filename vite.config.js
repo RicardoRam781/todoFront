@@ -9,8 +9,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       filename: 'sw.js', // Nombre de tu archivo de Service Worker
+      strategies: 'injectManifest',
       injectManifest: {
-        swSrc: './sw.js', // Ruta del SW personalizado
+        swSrc: './sw-custom.js', // Ruta del SW personalizado
         swDest: 'dist/sw.js', // Dónde se copiará el SW en la build
       },
       manifest: {
