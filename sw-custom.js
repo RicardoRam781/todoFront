@@ -38,3 +38,16 @@ this.addEventListener('fetch', (event) =>{
   
 })
 
+
+if ('serviceWorker' in navigator && 'SyncManager' in window) {
+    navigator.serviceWorker.ready.then(registration => {
+      return registration.sync.register('sync-tasks');
+    }).then(() => {
+      console.log('Sincronización de fondo registrada');
+    }).catch(error => {
+      console.log('Error al registrar la sincronización de fondo:', error);
+    });
+  } else {
+    console.log('Sincronización en background no soportada');
+  }
+  

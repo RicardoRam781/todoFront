@@ -4,14 +4,13 @@ import useFetching from '../hooks/useFetching'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import useChangeStatus from '../hooks/useChangeStatus';
 import useDeleteTodo from '../hooks/useDeleteTodo';
-export default function TodoDisplay({ id, task, editText, getId, status }) {
+export default function TodoDisplay({ id, task, editText, getId, status , setUpdate}) {
 
   const [checked, setChecked] = useState(status)
   const { loading, changeStatus } = useChangeStatus('http://localhost:3000/update/');
   const { loadingDelete, deleteTodo } = useDeleteTodo('http://localhost:3000/delete/')
   useEffect(() => {
-
-  }, [checked])
+console.log() }, [checked])
 
   const handleCheckChange = () => {
     setChecked(!checked)
@@ -24,12 +23,13 @@ export default function TodoDisplay({ id, task, editText, getId, status }) {
   }
   const handleDelete = () => {
     deleteTodo(id)
+    setUpdate(prev => !prev)
   }
 
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" ,  width:"100%"}}>
-      <div>
+    <div style={{ display: "flex", justifyContent: "space-between" ,  width:"100%" ,boxShadow:"0 4px 8px rgba(0, 0, 0, 0.1)", alignItems:"center", background:"white", marginTop:10}}>
+      <div style={{padding:"10px"}}>
         <Checkbox checked={checked} onChange={handleCheckChange}>{task}</Checkbox>
       </div>
       <div>

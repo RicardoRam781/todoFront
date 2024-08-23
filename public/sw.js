@@ -1,25 +1,19 @@
-import { precacheAndRoute } from 'workbox-precaching';
-
-
-const wbManifest = self.__WB_MANIFEST
-
 const CACHE_DATA = "appV1";
 const urlsToCache = [
    '/',
    '/index.html',
    '/static/js/main.js',
    '/static/css/main.css',
-   '/assets/index-DiwrgTda.css',  
    '/manifest.webmanifest',
    '/registerSW.js',
-   '/assets/index-DiwrgTda.js',
    '/pwa-192x192.png',
-   '/assets/index-DsjFLGrr.js',
-   '/assets/index-C2cmsO4h.js',
    '/vite.svg',
-
+   '/assets/index-DotLjDNg.js',
+   '/assets/index-CPVmn-au.css',
+   '/injected.js'
 ];
-this.addEventListener("install", (event) =>{
+
+self.addEventListener("install", (event) =>{
    event.waitUntil(
        caches.open(CACHE_DATA).then((cache)=>{
            cache.addAll(urlsToCache)
@@ -27,19 +21,34 @@ this.addEventListener("install", (event) =>{
    )
 })
 
-this.addEventListener('fetch', (event) =>{
+self.addEventListener('fetch', (event) =>{
    if(!navigator.onLine){
        event.respondWith(
            caches.match(event.request).then((resp) =>{
                if(resp){
                    return resp
                } 
-               let requestUrl = event.request.clone()
-               fetch(requestUrl)
-              
+                 
            })
        )
    }
   
 })
+self.addEventListener('sync', (event)=> {
+    if(event.tag === 'post-data'){
+        event.waitUntil(addData())
+    }
+})
 
+function addData() { 
+    const data = JSON.parse(localStorage.getItem("addTodo"))
+    fetch('http://localhost:3000/add',{
+        method:"POST",
+        body: JSON.stringify({
+            body:data
+        }),
+        headers:{
+            'Content-Type': 'application/json'
+        }
+    }).then(() => Promise.resolve().catch(() => Promise.reject()));
+}

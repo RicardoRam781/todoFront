@@ -4,8 +4,21 @@ export default function useEditTodo(url) {
     
     const [loading, setLoading] = useState(false);
     
-
+    const editlocal = (task,id) =>{
+        const todos = JSON.parse(localStorage.getItem("todos"))
+        todos.map((item,index) =>{
+            if(item.id == id){
+                todos[index].body = task
+            }
+        })
+        localStorage.setItem("todos", JSON.stringify(todos))
+       
+    }
     const editData = async (task,id) => {
+        if(!navigator.onLine){
+            editlocal(task,id)
+            return
+        }
         setLoading(true)
         const result = await fetch(url+id,{
             method:"PUT",
@@ -16,7 +29,6 @@ export default function useEditTodo(url) {
                 'Content-Type': 'application/json'
             }
         })
-        const dataResult = await result.json()
         setLoading(false)
 
     }
