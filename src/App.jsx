@@ -22,7 +22,7 @@ function App() {
       
       const localData = localStorage.getItem('todos')
       try{
-        console.log("try")
+     
         const result = await fetch('https://todoback-production-6ad4.up.railway.app/syncData'||'http://localhost:3000/syncData',{
           method:"POST",
           headers: {
@@ -33,7 +33,7 @@ function App() {
 
         setUpdate(prev => !prev)
         
-        console.log("RESULT",result)
+       
 
         if(result.status == 201){
           console.log("created")

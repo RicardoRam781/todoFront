@@ -34,7 +34,6 @@ export default function useAddTodo(url) {
             })
             addlocal(task)
             const dataResult = await result.json()
-            console.log("REsult add", dataResult)
         }catch(err){
             console.log(err)
         }
