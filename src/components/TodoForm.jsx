@@ -6,8 +6,8 @@ import useEditTodo from '../hooks/useEditTodo';
 
 
 export default function TodoForm({editText,id,setUpdate, setEditText}) {
-    const {loading, postData} = useAddTodo('http://localhost:3000/add')
-    const {loadingEdit, editData} = useEditTodo('http://localhost:3000/update/')
+    const {loading, postData} = useAddTodo(process.env.PROD_URL + '/add' || 'http://localhost:3000/add')
+    const {loadingEdit, editData} = useEditTodo(process.env.PROD_URL + '/update/' || 'http://localhost:3000/update/')
     const [btnText, setBtnText] = useState('add');
     const [body, setBody] = useState('');
 

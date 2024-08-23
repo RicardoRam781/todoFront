@@ -9,7 +9,7 @@ function App() {
   const [online,setOnline] = useState(true)
  
   const [update, setUpdate] = useState(false)
-  const {data,loading,mode} = useFetching('http://localhost:3000/', update)
+  const {data,loading,mode} = useFetching(process.env.PROD_URL || 'http://localhost:3000/', update)
   const [editText, setEditText] = useState('')
   const [getId, setGetId] = useState(0)
 
