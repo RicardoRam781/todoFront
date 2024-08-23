@@ -9,7 +9,7 @@ function App() {
   const [online,setOnline] = useState(true)
  
   const [update, setUpdate] = useState(false)
-  const {data,loading,mode} = useFetching(process.env.PROD_URL || 'http://localhost:3000/', update)
+  const {data,loading,mode} = useFetching('https://todoback-production-6ad4.up.railway.app' || 'http://localhost:3000/', update)
   const [editText, setEditText] = useState('')
   const [getId, setGetId] = useState(0)
 
@@ -23,7 +23,7 @@ function App() {
       const localData = localStorage.getItem('todos')
       try{
         console.log("try")
-        const result = await fetch('http://localhost:3000/syncData',{
+        const result = await fetch('https://todoback-production-6ad4.up.railway.app/syncData'||'http://localhost:3000/syncData',{
           method:"POST",
           headers: {
             'Content-Type': 'application/json',
