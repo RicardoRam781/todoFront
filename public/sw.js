@@ -8,10 +8,9 @@ const urlsToCache = [
    '/registerSW.js',
    '/pwa-192x192.png',
    '/vite.svg',
-   '/assets/index-WC4ZiHm5.js',
    '/assets/index-CPVmn-au.css',
    '/injected.js',
-   '/assets/index-D599uzT2.js',
+   '/assets/index-hqR0ejj9.js'
    
    
 ];

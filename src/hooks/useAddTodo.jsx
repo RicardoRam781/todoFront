@@ -6,14 +6,13 @@ export default function useAddTodo(url,setUpdate) {
     
     const addlocal = (task) =>{
         const todos = JSON.parse(localStorage.getItem("todos"))
+        if(todos.length <= 0){
+            localStorage.setItem("todos", JSON.stringify([{body:task}]))
+        } else {
+            todos?.unshift({id:todos[0].id + 1, body:task})
 
-        // localStorage.setItem("addTodo",JSON.stringify({id:todos[0].id + 1, body:task}))
-        // navigator.serviceWorker.ready.then((swRegistration ) =>{
-        //     console.log("sw register",swRegistration)
-        //     swRegistration.sync.register('post-data')
-        // }).catch((error) => console.log(error))
-        todos.unshift({id:todos[0].id + 1, body:task})
-        localStorage.setItem("todos", JSON.stringify(todos))
+            localStorage.setItem("todos", JSON.stringify(todos))
+        }
         setUpdate(prev => !prev)
     }
    

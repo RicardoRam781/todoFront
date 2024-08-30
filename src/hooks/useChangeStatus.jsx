@@ -40,7 +40,11 @@ export default function useChangeStatus(url, setUpdate) {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             }
+            
         })
+        if(result.ok){
+            changeStatusLocal(status,id)
+        }
         setLoading(false)
 
     }

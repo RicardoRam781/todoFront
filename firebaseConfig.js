@@ -1,6 +1,6 @@
 
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth'
+import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth'
 
 
 
@@ -145,6 +145,16 @@ export async function signInWithEmailandPass(email,Password){
     }
     const errorCode = err.code;
     const errorMessage = err.message;
+  }
+}
+
+export async function LogOut(){
+  try{
+    await signOut(auth)
+    localStorage.clear()
+    alert("See you soon!")
+  }catch(err){
+    console.log(err)
   }
 }
 

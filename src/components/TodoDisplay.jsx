@@ -4,13 +4,14 @@ import useFetching from '../hooks/useFetching'
 import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import useChangeStatus from '../hooks/useChangeStatus';
 import useDeleteTodo from '../hooks/useDeleteTodo';
-export default function TodoDisplay({ id, task, editText, getId, status , setUpdate}) {
+export default function TodoDisplay({ id, task, editText, getId, status, setUpdate }) {
 
   const [checked, setChecked] = useState(status)
-  const { loading, changeStatus } = useChangeStatus('https://todoback-production-6ad4.up.railway.app/update/' || 'http://localhost:3000/update/',setUpdate);
-  const { loadingDelete, deleteTodo } = useDeleteTodo('https://todoback-production-6ad4.up.railway.app/delete/' || 'http://localhost:3000/delete/',setUpdate)
+  const { loading, changeStatus } = useChangeStatus('https://todoback-production-6ad4.up.railway.app/update/' || 'http://localhost:3000/update/', setUpdate);
+  const { loadingDelete, deleteTodo } = useDeleteTodo('https://todoback-production-6ad4.up.railway.app/delete/' || 'http://localhost:3000/delete/', setUpdate)
   useEffect(() => {
-console.log() }, [checked])
+   
+  }, [checked])
 
   const handleCheckChange = () => {
     setChecked(!checked)
@@ -23,18 +24,18 @@ console.log() }, [checked])
   }
   const handleDelete = () => {
     deleteTodo(id)
-  
+
   }
 
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-between" ,  width:"100%" ,boxShadow:"0 4px 8px rgba(0, 0, 0, 0.1)", alignItems:"center", background:"white", marginTop:10}}>
-      <div style={{padding:"10px"}}>
+    <div style={{ display: "flex", justifyContent: "space-between", width: "100%", boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)", alignItems: "center", background: "white", marginTop: 10 }}>
+      <div style={{ padding: "10px" }}>
         <Checkbox checked={checked} onChange={handleCheckChange}>{task}</Checkbox>
       </div>
       <div>
-        <EditOutlined style={{margin:10}} onClick={handleEdit} />
-        <DeleteOutlined style={{margin:10}}  onClick={handleDelete} />
+        <EditOutlined style={{ margin: 10 }} onClick={handleEdit} />
+        <DeleteOutlined style={{ margin: 10 }} onClick={handleDelete} />
       </div>
 
 

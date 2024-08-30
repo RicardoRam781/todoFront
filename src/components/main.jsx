@@ -4,6 +4,7 @@ import TodoForm from './TodoForm.jsx'
 import {CopyOutlined} from '@ant-design/icons';
 import TodoDisplay from './TodoDisplay.jsx'
 import useFetching from '../hooks/useFetching'
+import { Spin } from 'antd';
 
 
 function MainView() {
@@ -15,6 +16,8 @@ function MainView() {
   const [token, setToken] = useState(null)
   const {data,loading,mode} = useFetching('https://todoback-production-6ad4.up.railway.app' || 'http://localhost:3000/', update,token)
  
+
+  const tkn = localStorage.getItem('tkn')
 
 
    const syncData = async () => {
@@ -86,10 +89,13 @@ function MainView() {
           !online && 
           <p>You are offline, some changes could be not saved...</p>
         }
-      {data != null ?  data.map(task => (
+      {data != null && data.map(task => (
       <TodoDisplay key={task.id} id={task.id} task={task.body} editText={setEditText} getId={setGetId} status={task.status} setUpdate={setUpdate}></TodoDisplay> 
-     
-    )) : <p>You have to LogIn to see your to-do list</p>}
+    
+    )) }
+    {
+      !tkn && <h3>You have to log in to add task</h3>
+    }
       
         
        </div>

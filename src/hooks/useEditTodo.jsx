@@ -41,9 +41,11 @@ export default function useEditTodo(url, setUpdate) {
                 'Authorization': `Bearer ${token}`
             }
         })
+        
         if(result.ok){
+           
             editlocal(task, id)
-        }
+        } 
         setLoading(false)
 
     }

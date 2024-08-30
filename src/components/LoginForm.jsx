@@ -118,7 +118,7 @@ export default function LoginForm() {
             <Flex justify="center" align="center">
 
             <Button icon={<GoogleOutlined />} onClick={handleGoogle}>Sign in with google</Button>
-            <Button icon={<GithubOutlined />} onClick={handleGithub}>Sign in with Github</Button>
+            {/* <Button icon={<GithubOutlined />} onClick={handleGithub}>Sign in with Github</Button> */}
             <Button type="primary" htmlType="submit" style={{width:"15rem"}} >Sign in with email</Button>
             </Flex>
            
