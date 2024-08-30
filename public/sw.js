@@ -8,9 +8,12 @@ const urlsToCache = [
    '/registerSW.js',
    '/pwa-192x192.png',
    '/vite.svg',
-   '/assets/index-DotLjDNg.js',
+   '/assets/index-WC4ZiHm5.js',
    '/assets/index-CPVmn-au.css',
-   '/injected.js'
+   '/injected.js',
+   '/assets/index-D599uzT2.js',
+   
+   
 ];
 
 self.addEventListener("install", (event) =>{
