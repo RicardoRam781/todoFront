@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import MainView from "./components/main";
-import LoginForm from "./components/loginForm";
+import LoginForm from "./components/LoginForm";
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
 import NavBar from "./components/navBar";
 import RegisterForm from "./components/RegisterForm";
