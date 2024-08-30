@@ -1,6 +1,7 @@
+import { getAuth } from 'firebase/auth';
 import React, { useEffect, useState } from 'react'
 
-export default function useChangeStatus(url) {
+export default function useChangeStatus(url, setUpdate) {
     
     const [loading, setLoading] = useState(false);
     
@@ -13,6 +14,7 @@ export default function useChangeStatus(url) {
             }
         })
         localStorage.setItem("todos", JSON.stringify(todos))
+        setUpdate(prev => !prev)
     }
     const changeStatus = async (status,id) => {
         setLoading(true)
@@ -21,13 +23,22 @@ export default function useChangeStatus(url) {
             changeStatusLocal(status,id)
             return
         }
-        const result = await fetch(url+id,{
+            const auth = getAuth();
+            const user = auth.currentUser;
+            
+            if(!user){
+                alert('You have to log in')
+                return 
+            }
+            const token = await user.getIdToken()
+            const result = await fetch(url+id,{
             method:"PUT",
             body: JSON.stringify({
                 status:status
             }),
             headers:{
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
         })
         setLoading(false)

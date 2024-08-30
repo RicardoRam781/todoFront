@@ -6,10 +6,11 @@ import useEditTodo from '../hooks/useEditTodo';
 
 
 export default function TodoForm({editText,id,setUpdate, setEditText}) {
-    const {loading, postData} = useAddTodo('https://todoback-production-6ad4.up.railway.app/add' || 'http://localhost:3000/add')
-    const {loadingEdit, editData} = useEditTodo('https://todoback-production-6ad4.up.railway.app/update/' || 'http://localhost:3000/update/')
+    const {loading, postData} = useAddTodo(/*'https://todoback-production-6ad4.up.railway.app/add' ||*/'http://localhost:3000/add',setUpdate)
+    const {loadingEdit, editData} = useEditTodo(/*'https://todoback-production-6ad4.up.railway.app/update/' || */'http://localhost:3000/update/',setUpdate)
     const [btnText, setBtnText] = useState('add');
     const [body, setBody] = useState('');
+    const tkn = localStorage.getItem('tkn')
 
   useEffect(() => {
     if (editText) {
@@ -26,18 +27,18 @@ export default function TodoForm({editText,id,setUpdate, setEditText}) {
     }
   };
 
-  
+ 
 
   const handleSubmit = () => {
     console.log("legtn", editText.length)
     if(editText.length > 0){
       editData(body,id)
-      setUpdate(prev => !prev)
+      
       handleClearValues()
      
     } else {
       postData(body)
-      setUpdate(prev => !prev)
+      
       handleClearValues()
     }
   }
@@ -102,7 +103,7 @@ export default function TodoForm({editText,id,setUpdate, setEditText}) {
      
     >
        
-        <Button type="primary" htmlType="submit" icon={<PlusOutlined />} iconPosition={'end'} >
+        <Button type="primary" htmlType="submit" icon={<PlusOutlined />} iconPosition={'end'} disabled={tkn ? false : true} >
         {
           btnText
         }
