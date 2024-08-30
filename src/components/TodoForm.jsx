@@ -6,8 +6,8 @@ import useEditTodo from '../hooks/useEditTodo';
 
 
 export default function TodoForm({editText,id,setUpdate, setEditText}) {
-    const {loading, postData} = useAddTodo(/*'https://todoback-production-6ad4.up.railway.app/add' ||*/'http://localhost:3000/add',setUpdate)
-    const {loadingEdit, editData} = useEditTodo(/*'https://todoback-production-6ad4.up.railway.app/update/' || */'http://localhost:3000/update/',setUpdate)
+    const {loading, postData} = useAddTodo('https://todoback-production-6ad4.up.railway.app/add' ||'http://localhost:3000/add',setUpdate)
+    const {loadingEdit, editData} = useEditTodo('https://todoback-production-6ad4.up.railway.app/update/' || 'http://localhost:3000/update/',setUpdate)
     const [btnText, setBtnText] = useState('add');
     const [body, setBody] = useState('');
     const tkn = localStorage.getItem('tkn')

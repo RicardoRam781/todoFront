@@ -84,7 +84,7 @@ async function saveUser(){
   const user = auth.currentUser;
   const uid = user.uid
   const userEmail = user.email
-  const fetchRes = await fetch('http://localhost:3000/add/user',{
+  const fetchRes = await fetch('https://todoback-production-6ad4.up.railway.app/add/user'||'http://localhost:3000/add/user',{
     method: "POST",
     headers: {
       'Content-Type': 'application/json'
@@ -107,7 +107,7 @@ export async function signUpWithEmailAndPass(email,password){
     const uid = user.uid
     const userEmail = user.email
     console.log("uid", uid, "email", userEmail)
-    const fetchRes = await fetch('http://localhost:3000/add/user',{
+    const fetchRes = await fetch('https://todoback-production-6ad4.up.railway.app/add/user'||'http://localhost:3000/add/user',{
     method: "POST",
     headers: {
       'Content-Type': 'application/json'

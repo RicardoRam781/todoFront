@@ -13,7 +13,7 @@ function MainView() {
   const [editText, setEditText] = useState('')
   const [getId, setGetId] = useState(0)
   const [token, setToken] = useState(null)
-  const {data,loading,mode} = useFetching('http://localhost:3000/', update,token)
+  const {data,loading,mode} = useFetching('https://todoback-production-6ad4.up.railway.app' || 'http://localhost:3000/', update,token)
  
 
 
@@ -25,7 +25,7 @@ function MainView() {
       
       try{
         const token = localStorage.getItem('tkn')
-        const result = await fetch(/*'https://todoback-production-6ad4.up.railway.app/syncData'||*/'http://localhost:3000/syncData',{
+        const result = await fetch('https://todoback-production-6ad4.up.railway.app/syncData'||'http://localhost:3000/syncData',{
           method:"POST",
           headers: {
             'Content-Type': 'application/json',

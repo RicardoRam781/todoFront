@@ -7,8 +7,8 @@ import useDeleteTodo from '../hooks/useDeleteTodo';
 export default function TodoDisplay({ id, task, editText, getId, status , setUpdate}) {
 
   const [checked, setChecked] = useState(status)
-  const { loading, changeStatus } = useChangeStatus(/*'https://todoback-production-6ad4.up.railway.app/update/' || */'http://localhost:3000/update/',setUpdate);
-  const { loadingDelete, deleteTodo } = useDeleteTodo(/*'https://todoback-production-6ad4.up.railway.app/delete/' || */'http://localhost:3000/delete/',setUpdate)
+  const { loading, changeStatus } = useChangeStatus('https://todoback-production-6ad4.up.railway.app/update/' || 'http://localhost:3000/update/',setUpdate);
+  const { loadingDelete, deleteTodo } = useDeleteTodo('https://todoback-production-6ad4.up.railway.app/delete/' || 'http://localhost:3000/delete/',setUpdate)
   useEffect(() => {
 console.log() }, [checked])
 
